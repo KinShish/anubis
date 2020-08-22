@@ -1,6 +1,7 @@
-const Joi = require('@hapi/joi'),
-    natural = require('natural');
-natural.PorterStemmerRu.attach();
+const Joi = require('@hapi/joi');
+
+const { NlpManager } = require('node-nlp');
+const manager = new NlpManager({ languages: ['ru'] });
 
 
 
@@ -18,17 +19,21 @@ exports.plugin = {
             config:{
                 async handler(req) {
                     try {
-                        const webClassifier=require('../classifier/web.json');
-                        const restoredClassifier = natural.BayesClassifier.restore(webClassifier);
                         const data=require('../../test/data.json');
                         //Временно не работает
                         //const text=data.text.split('\\n').join(' ');//убираем переходы на новую строку
-                        const result=[]
-                        data.test.forEach(t=>{
-                            const type=restoredClassifier.classify(t)
-
-                            result.push({type:type==="Rel"?1:(type==="NoN"?2:3),comment:t})
-                        })
+                        let result={
+                            NoN:{count:0,comments:[]},
+                            None:{count:0,comments:[]},
+                            Rel:{count:0,comments:[]},
+                            Spam:{count:0,comments:[]}
+                        }
+                        manager.load('./src/classifier/web.json');
+                        for(let c of data.test){
+                            let response = await manager.process('ru', c);
+                            result[response.intent].count++;
+                            result[response.intent].comments.push(c);
+                        }
                         return {err:false,result}
                     }catch (e){
                         console.log(e)
