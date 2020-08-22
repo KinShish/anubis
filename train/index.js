@@ -14,7 +14,7 @@ natural.PorterStemmerRu.attach();
 watch=(i)=>{
     if(data.comments[i]!==undefined){
         console.log(data.comments[i].comment)
-        const arrayKey=data.comments[i].blogger_text.tokenizeAndStem();
+        const arrayKey=new Set(data.comments[i].blogger_text.tokenizeAndStem());
         rl.question('релевантный?', function(answer){
             switch (answer){
                 case '1':
