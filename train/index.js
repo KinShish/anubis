@@ -23,6 +23,7 @@ watch=(i)=>{
                     console.log('релевантно')
                     break;
                 case '2':
+                    classifier.addDocument(data.comments[i].comment, "NoN");
                     console.log('не релевантно')
                     break;
                 default:

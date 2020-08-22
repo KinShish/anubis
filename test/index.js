@@ -26,7 +26,6 @@ data.test.forEach(t=>{
         }
     })
     console.log(max);
-
 })
 
 
