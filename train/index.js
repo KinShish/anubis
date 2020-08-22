@@ -7,6 +7,7 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
 const data=require("./localization.json");
 natural.PorterStemmerRu.attach();
 
@@ -15,23 +16,37 @@ watch=(i)=>{
         console.log(data.comments[i].comment)
         const arrayKey=data.comments[i].blogger_text.tokenizeAndStem();
         rl.question('релевантный?', function(answer){
-            if(answer==='1'){
-                arrayKey.forEach(k=>{
-                    classifier.addDocument(data.comments[i].comment, k);
-                })
-                console.log('да')
-                watch(i+1);
-            }else{
-                classifier.addDocument(data.comments[i].comment, "спам");
-                console.log('нет')
-                watch(i+1);
+            switch (answer){
+                case '1':
+                    arrayKey.forEach(k=>{
+                        classifier.addDocument(data.comments[i].comment, k);
+                    })
+                    console.log('релевантно')
+                    break;
+                case '2':
+                    console.log('не релевантно')
+                    break;
+                default:
+                    classifier.addDocument(data.comments[i].comment, "спам");
+                    console.log('спам')
+                    break;
             }
+            watch(i+1);
         })
+    }else{
+        classifier.train();
+        classifier.save('classifier.json', function(err, classifier) {
+            if(err){
+                console.log(err)
+            }else{
+                console.log('Сохранили в файл')
+            }
+        });
     }
 }
 watch(0);
 
-classifier.train();
+
 
 
 /*
@@ -50,9 +65,5 @@ for (let i = 0; i < data.test.length; i++) {
     console.log(classifier.classify('i am short silver'));
     //console.log(data.test[i],classifier.getClassifications(data.test[i]));
 };
-classifier.save('classifier.json', function(err, classifier) {
-    // the classifier is saved to the classifier.json file!
-});
-
  */
 
