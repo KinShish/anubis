@@ -8,7 +8,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const data=require("./localization.json");
+const data=require("./data/localization.json");
 natural.PorterStemmerRu.attach();
 
 watch=(i)=>{
@@ -44,25 +44,3 @@ watch=(i)=>{
     }
 }
 watch(0);
-
-
-
-
-/*
-data.good.forEach(g=>{
-    arrayKey.forEach(k=>{
-        classifier.addDocument(g, k);
-    })
-})
-data.bad.forEach(g=>{
-    classifier.addDocument(g, "спам");
-})
-
-classifier.train();
-
-for (let i = 0; i < data.test.length; i++) {
-    console.log(classifier.classify('i am short silver'));
-    //console.log(data.test[i],classifier.getClassifications(data.test[i]));
-};
- */
-
