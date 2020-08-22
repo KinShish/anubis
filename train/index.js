@@ -13,6 +13,7 @@ natural.PorterStemmerRu.attach();
 
 watch=(i)=>{
     if(data.comments[i]!==undefined){
+        console.log(data.comments[i].comment)
         const arrayKey=new Set(data.comments[i].blogger_text.split('\\n').join(' ').tokenizeAndStem());
         rl.question('релевантный?', function(answer){
             switch (answer){
