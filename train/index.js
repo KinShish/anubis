@@ -18,9 +18,7 @@ watch=(i)=>{
         rl.question('релевантный?', function(answer){
             switch (answer){
                 case '1':
-                    arrayKey.forEach(k=>{
-                        classifier.addDocument(data.comments[i].comment, k);
-                    })
+                    classifier.addDocument(data.comments[i].comment, "Rel");
                     console.log('релевантно')
                     break;
                 case '2':

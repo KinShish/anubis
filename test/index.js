@@ -16,15 +16,20 @@ data.test.forEach(t=>{
             max.push(a);
             arrayCoeficient.push(a)
         }
+        if(a.label==='NoN'){
+            max.push(a);
+            arrayCoeficient.push(a)
+        }
     }
-    arrayKey.forEach(k=>{
+    console.log(restoredClassifier.classify(t),t)
+    /*arrayKey.forEach(k=>{
         for(let a of arrayResult){
             if(k===a.label){
                 arrayCoeficient.push(a)
                 if(a.value>max[max.length-1].value){max.push(a)}
             }
         }
-    })
+    })*/
     console.log(max);
 })
 
