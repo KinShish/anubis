@@ -4,7 +4,7 @@
 		"host": "192.168.1.23",
 		"port": 3000,
 		"plugins": ["swagger","laabr"],
-		"modules": ["classifier"]
+		"modules": ["classifier","parser"]
 	},
 	"swagger": {
 		"info": {

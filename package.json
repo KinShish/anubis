@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/training/index.js",
   "scripts": {
-    "test": "nodemon src/index.js"
+    "test": "npm src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,15 +14,17 @@
     "@hapi/inert": "^6.0.1",
     "@hapi/joi": "^17.1.1",
     "@hapi/vision": "^6.0.0",
+    "apify": "^0.21.3",
     "bcrypt-nodejs": "0.0.3",
     "chai": "^4.2.0",
     "hapi-swagger": "^13.1.0",
     "ip": "^1.1.5",
     "laabr": "^6.1.1",
     "mocha": "^7.2.0",
-    "natural": "^2.1.5",
     "nconf": "^0.10.0",
     "node-nlp": "^4.10.5",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "sqlite-async": "^1.1.0",
+    "sqlite3": "^5.0.0"
   }
 }
