@@ -11,7 +11,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const data=require("./data/web.json");
+const data=require("./data/tehn.json");
 //natural.PorterStemmerRu.attach();
 
 watch=async (i)=>{

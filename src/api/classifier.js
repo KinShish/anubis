@@ -19,7 +19,7 @@ exports.plugin = {
             config:{
                 async handler(req) {
                     try {
-                        const data=require('../../test/data.json');
+                        const data=require('../../test/katyaKlap.json');
                         //Временно не работает
                         //const text=data.text.split('\\n').join(' ');//убираем переходы на новую строку
                         let result={
@@ -28,7 +28,7 @@ exports.plugin = {
                             Rel:{count:0,comments:[]},
                             Spam:{count:0,comments:[]}
                         }
-                        manager.load('./src/classifier/web.json');
+                        manager.load('./src/classifier/tehn.json');
                         for(let c of data.test){
                             let response = await manager.process('ru', c);
                             result[response.intent].count++;
