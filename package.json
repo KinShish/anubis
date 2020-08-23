@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/training/index.js",
   "scripts": {
-    "test": "npm src/index.js"
+    "server": "node src/index.js"
   },
   "keywords": [],
   "author": "",
