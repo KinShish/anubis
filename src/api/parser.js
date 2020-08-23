@@ -93,8 +93,9 @@ exports.plugin = {
             config:{
                 async handler(req,res) {
                     try {
+                        const url=req.payload.url
                         const c=cash(20);
-                        await parseUrl('https://www.instagram.com/p/CCs4oXSqq5V/',c);
+                        await parseUrl(url,c);
                         const searchArray=()=>{
                             for(let a of arrayPostRequest){
                                 if(a.cash===c){
@@ -110,7 +111,12 @@ exports.plugin = {
                     }
                 },
                 description: 'Тестовый анализ взятой публикации c инстограмма по тематике web',
-                tags: ['api']
+                tags: ['api'],
+                validate: {
+                    payload:Joi.object({
+                        url: Joi.string(),
+                    })
+                }
             }
         });
     }
