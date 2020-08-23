@@ -119,5 +119,16 @@ exports.plugin = {
                 }
             }
         });
+        server.route({
+            method: 'GET',
+            path: '/parser/',
+            config:{
+                async handler(req,res) {
+                    return "тест"
+                },
+                description: 'Тестовый анализ взятой публикации c инстограмма по тематике web',
+                tags: ['api']
+            }
+        });
     }
 };

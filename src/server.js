@@ -10,7 +10,7 @@ const init = async (configs) => {
         port: port,
         routes: {
             cors: {
-                origin: ["*"]
+                origin: ['*']
             }
         }
     });

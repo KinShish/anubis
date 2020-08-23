@@ -51,7 +51,7 @@ exports.plugin = {
                 async handler(req) {
                     try {
                         const temp=req.params.temp;
-                        const comments=req.params.comments;
+                        const comments=req.payload.comments;
                         //Временно не работает
                         //const text=data.text.split('\\n').join(' ');//убираем переходы на новую строку
                         let result={
