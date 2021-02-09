@@ -50,29 +50,32 @@ const parseUrl=async (url,cash)=>{
             const title = await page.title();
             const link=request.url;
             console.log(`Title of ${link}: ${title}`);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
-            await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
-            await Apify.utils.sleep(500);
+            try {
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+                await page.click("#react-root > section > main > div > div > article > div > div > ul > li > div > button");
+                await Apify.utils.sleep(500);
+            }catch (e) {
+                console.log('Был совершон лишний клик')
+            }
             const comments=await getTextInPage(page,"#react-root > section > main > div > div > article > div.eo2As > div.EtaWk > ul > ul > div > li > div > div > div.C4VMK > span")
             arrayPostRequest.push({comments,cash});
-
         },
         maxRequestsPerCrawl: 50,
         maxConcurrency: 1,

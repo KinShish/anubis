@@ -27,6 +27,7 @@ exports.plugin = {
                         }
                         manager.load('./src/classifier/tehn.json');
                         for(let c of data.test){
+                            console.log(c)
                             let response = await manager.process('ru', c);
                             result[response.intent].count++;
                             result[response.intent].comments.push(c);
@@ -62,6 +63,7 @@ exports.plugin = {
                         }
                         manager.load('./src/classifier/'+temp+'.json');
                         for(let c of comments){
+                            console.log(c);
                             let response = await manager.process('ru', c);
                             result[response.intent].count++;
                             result[response.intent].comments.push(c);
